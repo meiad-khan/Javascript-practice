@@ -13,7 +13,7 @@ const result = postsArray.reduce((acc, post) => {
   acc[post.id] = post;
   return acc;
 },{})
-console.log(result);
+// console.log(result);
 
 //? Output
 // {
@@ -22,3 +22,13 @@ console.log(result);
 //   "p-103": { "id": "p-103", "title": "Understanding Reduce", "author": "Chris" },
 //   "p-104": { "id": "p-104", "title": "CSS Grid Tricks", "author": "Alex" }
 // }
+
+
+
+
+//benefit of lookup table
+
+// const findPost = postsArray.find(item => item.id = 'p-104'); //--> O9(n)
+
+const findPost = result['p-104'];  //--> O(1).constant time. 
+console.log(findPost);
