@@ -8,11 +8,10 @@ const postsArray = [
   { id: "p-104", title: "CSS Grid Tricks", author: "Alex" },
 ];
 
-// const result = postsArray.map((arr, i) => {
-//   return { [arr.id]: arr };
-// });
+
 const result = postsArray.reduce((acc, post) => {
-  acc
+  acc[post.id] = post;
+  return acc;
 },{})
 console.log(result);
 
