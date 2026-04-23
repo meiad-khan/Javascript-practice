@@ -113,7 +113,7 @@ const topElectronicProducts = rawApiData.filter(
     return {
       name: item.productName,
       price: item.price
-    }
+    };
   });
 
 console.log(topElectronicProducts);
