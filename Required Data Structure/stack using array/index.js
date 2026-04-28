@@ -3,21 +3,21 @@ class Stack{
   constructor() {
     this.items = [];
   }
-  push(value) {
+  push(value) {//O(1)
     this.items.push(value);
   }
-  pop() {
+  pop() {  //O(1)
     if (this.isEmpty()) return undefined;
     return this.items.pop();
   }
-  peek() {
+  peek() { //O(1)
     if (this.isEmpty()) return undefined;
     return this.items[this.items.length - 1];
   }
-  isEmpty() {
+  isEmpty() { //O(1)
     return this.items.length === 0;
   }
-  print() {
+  print() { //O(n)
     console.log(this.items.reverse().join("-->")); //--> here reverse mutated the main items array. this will hamper the stack basic property... reverse() works inside the same array memory.
     console.log(this.items.slice().reverse().join("-->"));
     // slice Creates a new copied array. it is Non-mutating method (returns new array).
