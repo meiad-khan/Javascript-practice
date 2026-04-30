@@ -5,41 +5,41 @@ class Node{
   }
 }
 
-class Queue{
+class Queue {
   constructor() {
     this.head = null;
     this.tail = null;
     this.length = 0;
   }
-  enque(value) {
+
+  enqueue(value) {
     const newNode = new Node(value);
+
     if (!this.head) {
-      this.head = newNode;
-      this.tail = newNode;
+      this.head = this.tail = newNode;
     } else {
       this.tail.next = newNode;
       this.tail = newNode;
     }
+
     this.length++;
   }
 
-  deque() {
-    if (!this.head) {
-      return console.error("Queue is already empty");
-    }
+  dequeue() {
+    if (!this.head) return undefined;
+
+    const removed = this.head;
     this.head = this.head.next;
-    if (this.head === null) {
-      this.tail = null;
-    }
+
+    if (!this.head) this.tail = null;
+
     this.length--;
-  }
-  peek() {
-    if (this.length === 0) {
-      return console.error("Queue is empty");
-    }
-    return this.head.value;
+    return removed.value;
   }
 
+  peek() {
+    return this.head?.value;
+  }
   print() {
     const arr = [];
     let temp = this.head;
@@ -51,13 +51,15 @@ class Queue{
   }
 }
 
+
+
 const queue = new Queue();
-queue.enque(1);
+queue.enqueue(1);
 // queue.enque(2);
 // queue.enque(3);
 queue.print();
 console.log(queue.length);
-queue.deque();
+queue.dequeue();
 queue.print();
 console.log(queue.length);
 console.log(queue.tail);

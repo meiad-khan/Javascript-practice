@@ -5,54 +5,30 @@ class Node{
   }
 }
 
-class Stack{
+class Stack {
   constructor() {
     this.head = null;
-    this.tail = null;
     this.length = 0;
   }
-  push(value) {
+
+  push(value) { // O(1)
     const newNode = new Node(value);
-    if (!this.head) {
-       this.head = newNode;
-       this.tail = newNode;
-    } else {
-      this.tail.next = newNode;
-      this.tail = newNode;
-    }
-    this.length++;     
+    newNode.next = this.head;
+    this.head = newNode;
+    this.length++;
   }
 
-  pop() {
-    if (!this.head) {
-      return console.error("Stack is already empty");
-    }
-    if (this.length === 1) {
-      this.head = null;
-      this.tail = null;
-      this.length = 0;
-      return undefined;
-    }
-   
-    let leadingNode = this.head;
-    while (leadingNode.next.next !== null) {
-      leadingNode = leadingNode.next;
-    }
-    leadingNode.next = leadingNode.next.next;
-    if (leadingNode.next === null) {
-      this.tail = leadingNode;
-    }
+  pop() { // O(1)
+    if (!this.head) return undefined;
+    const removed = this.head;
+    this.head = this.head.next;
     this.length--;
-
+    return removed.value;
   }
 
-  peek() {
-    if (!this.head) {
-      return console.error("Stack is empty");
-    }
-    return this.tail.value;
+  peek() { // O(1)
+    return this.head?.value;
   }
-
   print() {
     const arr = [];
     let temp = this.head;
